@@ -1,0 +1,5 @@
+Ball released at frame 446 for video test1
+Ball released at frame 784 for video test2
+Ball released at frame 396 for video test3
+Ball released at frame 594 for video test4
+Ball released at frame 595 for video test5
