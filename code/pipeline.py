@@ -19,7 +19,6 @@ class Pipeline():
         Process one video, write the frame ID for when the ball was released to the log file
         :param video_path: path to the video of a baseball pitch
         '''
-
         cap = cv2.VideoCapture(video_path)
 
         video_base_name = self.tool.get_base(video_path)
@@ -59,9 +58,9 @@ class Pipeline():
         self.parse_log_file.close()
 
 def main():
-    video_dir = "../data/video/"
-    out_img_dir = "../data/frames/" # use None if do not want to visualize the frames when ball is released
-    parse_log = "../data/log.txt"
+    video_dir = "../data/video/" # directory containing input videos in *.mp4 format
+    out_img_dir = "../data/frames/" # use None if do not want to save the frames where baseball is released
+    parse_log = "../data/log.txt" # log file containing the frame ID where the baseball is released
     video_tool = Pipeline(out_img_dir)
     video_tool.process_all_video(video_dir, parse_log)
 

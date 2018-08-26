@@ -21,7 +21,6 @@ class Tool():
         :param video_full_path: full path to a video
         :return: video name without its directory path and the suffix
         '''
-        # input: filename      integer.suffix
         base_with_extension = os.path.basename(video_full_path)
         base_without_extension = os.path.splitext(base_with_extension)[0]
         return base_without_extension
@@ -29,7 +28,7 @@ class Tool():
     def save_image(self, frame_idx):
         '''
         Save the frame with contour drawn around the ball and the binary image representing grass and non-grass
-        :param frame_idx:
+        :param frame_idx: index for the frame to be saved
         '''
         if not os.path.exists(self.out_img_dir):
             os.makedirs(self.out_img_dir)
@@ -56,6 +55,11 @@ class Tool():
         self.mask = cv2.dilate(self.mask, None, iterations=2)
 
     def contour_is_ball(self,contour):
+        '''
+        Determine whether the contour is a baseball by checking the properties of the contour
+        :param contour: contour that is potentially a baseball
+        :return: True if the contour is baseball
+        '''
         # 1.
         # A contour is not a ball if it's too large or too small
 
@@ -66,7 +70,6 @@ class Tool():
 
         if area < min_area or area > max_area:
             return False
-
 
         # 2.
         # A contour cannot be a ball if its centroid is in the region of grass
